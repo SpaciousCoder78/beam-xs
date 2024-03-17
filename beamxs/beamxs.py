@@ -126,7 +126,7 @@ class beamxs:
             Rb       --> Reaction at roller support
     '''
 
-    def calculateReactions(loadPos, loadMag, pinPos, rollPos, beam):
+    def reactionsPTLoad(loadPos, loadMag, pinPos, rollPos, beam):
         # Calculating the distance from pin support
         a = abs(loadPos - pinPos)
         # Calcing length of beam
