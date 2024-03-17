@@ -7,7 +7,6 @@
     <list default="true" id="3924b216-5cd9-4f66-b5df-ac8f795e1439" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/beamxs/beamxs.py" beforeDir="false" afterPath="$PROJECT_DIR$/beamxs/beamxs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +95,8 @@
       <updated>1710610954944</updated>
       <workItem from="1710611032863" duration="201000" />
       <workItem from="1710612123529" duration="2007000" />
-      <workItem from="1710652396906" duration="904000" />
+      <workItem from="1710652396906" duration="993000" />
+      <workItem from="1710654909611" duration="899000" />
     </task>
     <servers />
   </component>
