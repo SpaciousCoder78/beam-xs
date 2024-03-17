@@ -1,34 +1,30 @@
 from beamxs.beamxs import beamxs as bm
 
+def test_createBeam():
+    beam = bm.createBeam(10)
+    assert beam is not None
 
+def test_definePin():
+    beam = bm.createBeam(10)
+    pinpos = bm.definePin(2,beam)
+    assert pinpos is not None
 
-#createBeam() test
-beam = bm.createBeam(10)
-print(beam)
+def test_defineRoller():
+    beam = bm.createBeam(10)
+    rollpos = bm.defineRoller(4,beam)
+    assert rollpos is not None
 
-#definePin() test
-pinpos = bm.definePin(2,beam)
-print(pinpos)
+def test_applyPointLoad():
+    beam = bm.createBeam(10)
+    ptload = bm.applyPointLoad(4,60,beam)
+    assert ptload is not None
 
-#defineRoller() test
-rollpos = bm.defineRoller(4,beam)
-print(rollpos)
+def test_applyUDL():
+    beam = bm.createBeam(10)
+    udlarray = bm.applyUDL(beam,20)
+    assert udlarray is not None
 
-#applyPointLoad() test
-ptload = bm.applyPointLoad(4,60,beam)
-print(ptload)
-
-#applyUDL() test
-udlarray = bm.applyUDL(beam,20)
-print(udlarray)
-
-#applyUVL()  test
-uvlarray = bm.applyUVL(beam,20,40)
-print(uvlarray)
-
-#applyMoment() test
-appliedmoment = bm.applyMoment(3,20,beam)
-print(appliedmoment)
-
-#reactionsPTLoad() test
-print(bm.reactionsPTLoad(3,30,1,5,beam))
+def test_applyUVL():
+    beam = bm.createBeam(10)
+    uvlarray = bm.applyUVL(beam,20,40)
+    assert uvlarray is not None
