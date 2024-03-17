@@ -5,7 +5,7 @@
 
 # Required
 
-version: 1
+version: 2
 
 
 # Set the OS, Python version and other tools you might need
@@ -57,8 +57,3 @@ formats:
 
 # See https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html
 
- python:
-
-   install:
-
-    - requirements: requirements.txt
