@@ -45,6 +45,7 @@ print(beam)
 ```
 
 - `definePin(pinPos,beam)`:
+  
 Method for defining the position of pin support
    
     Input:  pinPos      --> Pin Support Position
@@ -58,6 +59,7 @@ print(pinpos)
 ```
 
 - `defineRoller(rollPos,beam)`:
+  
   Method for defining the position of roller support
     
     Input:  rollPos --> Roller Support Position
@@ -70,7 +72,85 @@ print(pinpos)
   rollpos = bm.defineRoller(4,beam)
   print(rollpos)
   ```
-  
 - `applyPointLoad(loadPos,loadMag,beam)`:
-- sdsd
+
+  Method for applying Point Load on the beam
+    
+    Input:  loadPos --> Position of Point Load
+            loadMag --> Magnitude of Point Load
+            beam    --> Beam object
+           
+    Output: load    --> Applied Load 
+
+  Example:
+  ```py
+  ptload = bm.applyPointLoad(4,60,beam)
+  print(ptload)
+  ```
+  
+- `applyUDL(beam,loadPerUnitLength)`:
+
+  Method for applying UDL (Uniformly Distributed Load) on the beam
+    
+    Input:  beam              --> Beam object
+            loadPerUnitLength --> Load Per Unit Length
+           
+    Output: udl               --> Applied UDL
+
+  Example:
+  
+  ```py
+  udlarray = bm.applyUDL(beam,20)
+  print(udlarray)
+  ```
+
+- `applyUVL(beam,startLoad,endLoad)`:
+
+  Method for applying UVL (Uniformly Varying Load) on the beam
+    
+    Input:  beam       --> Beam object
+            startLoad  --> Start Load
+            endLoad    --> End Load
+    
+    Output: uvl        --> Applied UVL
+
+  Example:
+  ```py
+  uvlarray = bm.applyUVL(beam,20,40)
+  print(uvlarray)
+  ```
+- `applyMoment(momentPos, momentMag, beam)`:
+
+  Method for applying Moment on the beam
+    
+    Input:  momentPos --> Moment Position
+            momentMag --> Moment Magnitude
+            beam      --> Beam Object
+            
+    Output: moments    --> Moment Applied
+
+  Example:
+  ```py
+  appliedmoment = bm.applyMoment(3,20,beam)
+  print(appliedmoment)
+  ```
+- `reactionsPTLoad(loadPos, loadMag, pinPos, rollPos, beam)`:
+
+  Method for calculation support reaction of a simply supported beam with point load
+    
+    Input:  loadPos  --> Point Load Position
+            loadMag  --> Point Load Magnitude
+            beam     --> Beam Object
+            pinPos   --> Pin Position
+            rollPos  --> Roller Support Position
+            
+    Output: Ra       --> Reaction at pin support
+            Rb       --> Reaction at roller support
+
+  Example:
+
+  ```py
+  print(bm.reactionsPTLoad(3,30,1,5,beam))
+  ```
+  
 
