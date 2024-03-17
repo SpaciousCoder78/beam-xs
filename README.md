@@ -9,6 +9,8 @@
 
 Python Library for Beam Analysis for Civil Engineering
 
+Developed by Aryan Karamtoth from Information Technology Department at Kakatiya Institute of Technology and Science
+
 ## Supported Features
 
 - Making a beam
