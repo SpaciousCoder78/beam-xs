@@ -17,6 +17,10 @@ Developed by Aryan Karamtoth from Information Technology Department at Kakatiya 
 - Calculating Support Reactions of a beam
 - Applying load on a beam
 
+## Supported Beams
+- Simply Supported Beam
+- Overhanging Beam(Work in Progress)
+
 ## Installation
 
 ```
@@ -136,12 +140,11 @@ print(pinpos)
   appliedmoment = bm.applyMoment(3,20,beam)
   print(appliedmoment)
   ```
-- `reactionsPTLoad(loadPos, loadMag, pinPos, rollPos, beam)`:
+- `calcReactionsSSB(loads, pinPos, rollPos, beam)`:
 
   Method for calculation support reaction of a simply supported beam with point load
     
-    Input:  loadPos  --> Point Load Position
-            loadMag  --> Point Load Magnitude
+    Input:  loads    --> Dictionary containing load data
             beam     --> Beam Object
             pinPos   --> Pin Position
             rollPos  --> Roller Support Position
@@ -152,7 +155,16 @@ print(pinpos)
   Example:
 
   ```py
-  print(bm.reactionsPTLoad(3,30,1,5,beam))
+  loads = [
+    {'type': 'point', 'position': 2, 'magnitude': 50},
+    {'type': 'udl', 'start': 3, 'end': 5, 'magnitude': 20},
+    {'type': 'uvl', 'start': 6, 'end': 8, 'start_magnitude': 10, 'end_magnitude': 30}
+  ]
+  pinPos = 1
+  rollPos = 9
+  Ra, Rb = bm.calcReactionsSSB(loads, pinPos, rollPos, beam)
+  print(Ra)
+  print(Rb)
   ```
   
 
