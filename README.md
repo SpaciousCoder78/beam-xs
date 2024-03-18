@@ -142,7 +142,7 @@ print(pinpos)
   ```
 - `calcReactionsSSB(loads, pinPos, rollPos, beam)`:
 
-  Method for calculation support reaction of a simply supported beam with point load
+  Method for calculation support reaction of a simply supported beam with various loads
     
     Input:  loads    --> Dictionary containing load data
             beam     --> Beam Object
