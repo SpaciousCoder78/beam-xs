@@ -1,0 +1,32 @@
+#############################Beam XS#######################################
+Beam XS- A Python Library for Structural Beam Analysis
+
+Developed by Aryan Karamtoth from Kakatiya Institute of Technology and Science
+
+=============================Changelog=====================================
+
+v1.0.0
+Release Date: 17-3-2024
+
+- Official Release
+
+----------------------------------------------------------------------
+
+V1.0.1
+Release Date: 17-3-2024
+
+- Minor changes to the documentation and readme
+- Adjusted the tests
+
+-----------------------------------------------------------------------
+
+
+v1.1.0
+Release Date: 18-3-2024
+
+- Renamed reactionsPTLoad() function to calcReactionsSSB()
+- Deprecated reactionsPTLoad()
+- Added calcReactionsSSB() to make the library fully functional for Simply Supported Beam Analysis
+- Updated the documentation
+
+------------------------------------------------------------------------

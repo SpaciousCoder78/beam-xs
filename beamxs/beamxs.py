@@ -116,8 +116,7 @@ class beamxs:
     '''
     Method for calculation support reaction of a simply supported beam with point load
     
-    Input:  loadPos  --> Point Load Position
-            loadMag  --> Point Load Magnitude
+    Input:  loads    --> Dictionary containing load data
             beam     --> Beam Object
             pinPos   --> Pin Position
             rollPos  --> Roller Support Position
@@ -126,14 +125,59 @@ class beamxs:
             Rb       --> Reaction at roller support
     '''
 
-    def reactionsPTLoad(loadPos, loadMag, pinPos, rollPos, beam):
-        # Calculating the distance from pin support
-        a = abs(loadPos - pinPos)
-        # Calcing length of beam
-        L = len(beam)
-        # Calculate the reactions
-        Rb = (loadMag * (L - a)) / L  # Reaction at the roller support
-        Ra = (loadMag * a) / L  # Reaction at the pin support
-        return Ra, Rb
 
-    #----------------------------------------------------------------------------
+    def calcReactionsSSB(loads, pinPos, rollPos, beam):
+        # init the total reactions
+        Ra_total = 0
+        Rb_total = 0
+
+        # calc length of beam
+        L = len(beam)
+
+        # using a loop to check all the load values
+        for load in loads:
+            #we are using a dictionary input for checking the type of load
+            #in case of point load
+            #-----------------------------Point------------------------------------------
+            if load['type'] == 'point':
+                # calculating the distance from pin support
+                a = abs(load['position'] - pinPos)
+                # Calculate the reactions for this load
+                Rb = (load['magnitude'] * (L - a)) / L  # Reaction at the roller support
+                Ra = (load['magnitude'] * a) / L  # Reaction at the pin support
+                # Add the reactions for this load to the total reactions
+                Ra_total += Ra
+                Rb_total += Rb
+            #----------------------------UDL----------------------------------------------
+            elif load['type'] == 'udl':
+                # For UDL, calculate the equivalent point load
+                eqLoad = (load['end'] - load['start']) * load['magnitude']
+                # in UDL, the CG is at the midpoint so we calculate the CG
+                cg= (load['start'] + load['end']) / 2
+                # Now calculate the reactions as for a point load
+                a = abs(cg - pinPos)
+                Rb = (eqLoad * (L - a)) / L
+                Ra = (eqLoad * a) / L
+                Ra_total += Ra
+                Rb_total += Rb
+            #---------------------------------UVL--------------------------------------------
+            elif load['type'] == 'uvl':
+                # For UVL, calculate the equivalent point load
+                eqLoad = (load['end'] - load['start']) * (load['start_magnitude'] + load['end_magnitude']) / 2
+                # The position of the equivalent point load (CG) depends on the magnitudes of the start and end loads
+                if load['start_magnitude'] != load['end_magnitude']:
+                    cg = load['start'] + (
+                                2 * (load['end'] - load['start']) * load['end_magnitude']) / (
+                                                      load['start_magnitude'] + load['end_magnitude'])
+                else:
+                    cg = (load['start'] + load['end']) / 2
+                # Now calculate the reactions as for a point load
+                a = abs(cg - pinPos)
+                Rb = (eqLoad* (L - a)) / L
+                Ra = (eqLoad * a) / L
+                Ra_total += Ra
+                Rb_total += Rb
+            else:
+                raise ValueError("Invalid load type. Expected 'point', 'udl', or 'uvl'.")
+
+        return Ra_total, Rb_total

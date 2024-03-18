@@ -6,29 +6,13 @@ from beamxs.beamxs import beamxs as bm
 beam = bm.createBeam(10)
 print(beam)
 
-#definePin() test
-pinpos = bm.definePin(2,beam)
-print(pinpos)
-
-#defineRoller() test
-rollpos = bm.defineRoller(4,beam)
-print(rollpos)
-
-#applyPointLoad() test
-ptload = bm.applyPointLoad(4,60,beam)
-print(ptload)
-
-#applyUDL() test
-udlarray = bm.applyUDL(beam,20)
-print(udlarray)
-
-#applyUVL()  test
-uvlarray = bm.applyUVL(beam,20,40)
-print(uvlarray)
-
-#applyMoment() test
-appliedmoment = bm.applyMoment(3,20,beam)
-print(appliedmoment)
-
-#reactionsPTLoad() test
-print(bm.reactionsPTLoad(3,30,1,5,beam))
+loads = [
+    {'type': 'point', 'position': 2, 'magnitude': 50},
+    {'type': 'udl', 'start': 3, 'end': 5, 'magnitude': 20},
+    {'type': 'uvl', 'start': 6, 'end': 8, 'start_magnitude': 10, 'end_magnitude': 30}
+]
+pinPos = 1
+rollPos = 9
+Ra, Rb = bm.calcReactionsSSB(loads, pinPos, rollPos, beam)
+print(Ra)
+print(Rb)

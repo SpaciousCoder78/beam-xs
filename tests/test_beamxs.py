@@ -28,3 +28,10 @@ def test_applyUVL():
     beam = bm.createBeam(10)
     uvlarray = bm.applyUVL(beam,20,40)
     assert uvlarray is not None
+
+'''
+I'm kind of dumb at remembering things so im just leaving the commands here formyself to remember how to upload to pypi
+
+upload to pypi: twine upload dist/* -u __token__ -p your_pypi_token
+build lib: python setup.py sdist bdist_wheel
+'''

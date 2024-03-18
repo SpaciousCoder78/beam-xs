@@ -15,7 +15,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 # This call to setup() does all the work
 setup(
     name="beamxs",
-    version="1.0.1",
+    version="1.1.0",
     description="Python Library for Structural Beam Analysis",
     long_description="""A simple Python library for Structural Beam Analysis developed by students of Kakatiya Institute of Technology and Science for Civil Engineering Applications
                     Python Library for Beam Analysis for Civil Engineering
@@ -149,10 +149,9 @@ print(pinpos)
   ```
 - `reactionsPTLoad(loadPos, loadMag, pinPos, rollPos, beam)`:
 
-  Method for calculation support reaction of a simply supported beam with point load
+  Method for calculation support reaction of a simply supported beam with various loads
     
-    Input:  loadPos  --> Point Load Position
-            loadMag  --> Point Load Magnitude
+    Input:  loads    --> Dictionary containing load data
             beam     --> Beam Object
             pinPos   --> Pin Position
             rollPos  --> Roller Support Position
@@ -163,7 +162,16 @@ print(pinpos)
   Example:
 
   ```py
-  print(bm.reactionsPTLoad(3,30,1,5,beam))
+    loads = [
+    {'type': 'point', 'position': 2, 'magnitude': 50},
+    {'type': 'udl', 'start': 3, 'end': 5, 'magnitude': 20},
+    {'type': 'uvl', 'start': 6, 'end': 8, 'start_magnitude': 10, 'end_magnitude': 30}
+    ]
+    pinPos = 1
+    rollPos = 9
+    Ra, Rb = bm.calcReactionsSSB(loads, pinPos, rollPos, beam)
+    print(Ra)
+    print(Rb)
   ```
   
 
