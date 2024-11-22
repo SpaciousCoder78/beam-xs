@@ -8,14 +8,16 @@ tags:
   - engineering
 authors:
   - name: Aryan Karamtoth
-    orcid: 0000-0000-0000-0000
-    equal-contrib: true
-    affiliation: "1"
+    orcid: 0009-0006-4465-7276
+    affiliation: 1
 affiliations:
  - name: Aryan Karamtoth, Undergraduate Student, Kakatiya Institute of Technology and Science, Warangal, Telangana, India
    index: 1
+   ror: 00hx57361
 date: 22 November 2024
 bibliography: paper.bib
+
+---
 
 # Summary
 
