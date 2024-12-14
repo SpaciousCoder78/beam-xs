@@ -7,6 +7,10 @@
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
+![PyPI - Version](https://img.shields.io/pypi/v/beamxs)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/beamxs)
+[![PyPI Downloads](https://static.pepy.tech/badge/beamxs)](https://pepy.tech/projects/beamxs)
+
 Python Library for Beam Analysis for Civil Engineering
 
 Developed by Aryan Karamtoth from Information Technology Department at Kakatiya Institute of Technology and Science
